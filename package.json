@@ -1,0 +1,8 @@
+{
+	"scripts": {
+		"serve": "pug --watch worksheets --out build"
+	},
+	"devDependencies": {
+		"pug-cli": "^1.0.0-alpha6"
+	}
+}
