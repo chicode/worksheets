@@ -1,8 +1,8 @@
 {
-	"scripts": {
-		"serve": "pug --watch worksheets --out build"
-	},
-	"devDependencies": {
-		"pug-cli": "^1.0.0-alpha6"
-	}
+  "scripts": {
+    "watch": "pug -w worksheets -o build -b includes"
+  },
+  "devDependencies": {
+    "pug-cli": "^1.0.0-alpha6"
+  }
 }
