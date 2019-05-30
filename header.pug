@@ -1,0 +1,46 @@
+style.
+  @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-size: 0.7rem;
+    font-family: Karla;
+    padding: 10px;
+  }
+  
+  pre {
+    display: inline-block;
+    border: 1px solid black;
+    background: hsl(0, 0%, 98%);
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+  
+  .row > * {
+    width: 100%;
+    margin: 0 10px;
+  }
+
+if prismLanguages && prismLanguages.length
+  link(
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism.min.css"
+  )
+  script(  
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/prism.min.js"
+  )
+  each lang in prismLanguages
+    script(
+      src=`https://cdn.jsdelivr.net/npm/prismjs@1.16.0/components/prism-${lang}.min.js`
+    )

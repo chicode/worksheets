@@ -1,0 +1,120 @@
+- var prismLanguages = ["lisp"]
+
+include header.pug
+
+h3.
+  A computer program's job is really just to manipulate data. This data usually
+  takes the form of nested expressions.
+
+div.row
+  div
+    p Expressions in coding work the same way as in math
+    pre: code.language-none.
+      1 + 2
+
+  div
+    p But they use a special form called "prefix notation"
+    // it's actually lisp, but don't worry about it
+    pre: code.language-lisp.
+      (+ 1 2)
+
+  div
+    p What would these be?
+    pre: code.language-lisp.
+      (+ (* 3 2) 5)
+      (- 100 10 3 5)
+
+h3 The larger task of manipulating data is usually broken down into smaller tasks, called functions.
+
+div
+  p Functions are similar to the ones in math, but they also use prefix notation.
+  pre: code.language-lisp.
+    f(x) = 1 + x
+    -- normal notation
+    (f (x) (+ 1 x))
+    -- prefix notation
+    
+div
+  p Before you can use a function, you need to define it. You can do that by writing `defunc`:
+  pre: code.language-lisp.
+    (defunc f (x) (+ 1 x))
+    -- and then you can call it, which means that you get its value
+    (f 4)
+    --> (+ 1 4)
+    --> 5
+
+p Functions can call other functions.
+
+pre: code.language-lisp.
+  (defunc timeFive (x) (* 5 x))
+  (defunc plusFour (y) (+ 4 (timeFive y)))
+
+  (plusFour 3)
+  --> (+ 4 (timeFive 3))
+  --> (+ 4 (* 5 3))
+  --> 12
+
+h3 Groups of numbers
+
+pre: code.language-lisp.
+  [ 1 2 3 4 5 ]
+
+p We can transform numbers -> adding 2 to 3
+
+pre: code.language-lisp.
+  (+ 3 2)
+
+p We can transform groups!
+
+pre: code.language-lisp.
+  (defunc addTwo (x) (+ x 2))
+
+  (map addTwo [ 1 2 3 4 5 ])
+  --> [ 3 4 5 6 7 ]
+
+h3 Texts!
+
+p Texts are groups of characters surrounded by quotes, like this:
+
+pre: code.language-lisp.
+  "abc"
+  --> "abc"
+
+  "hello there, how are you"
+  --> "hello there, how are you"
+
+p You can manipulate texts using functions too!
+
+pre: code.language-lisp.
+  (join "this is " "so cool!")
+  --> "this is so cool!"
+
+  (defunc hello (name) (join "hey there " name "!"))
+
+  (hello "world")
+  --> "hey there world!"
+
+  (hello "you")
+  --> "hey there you!"
+
+h3 Exercises
+
+p Now that you know how prefix notation works, try evaluating some of these yourself!
+
+pre: code.language-lisp.
+  (+ 9 (- 9 5 2) (/ 18 3) (* 3 4))
+// answer: 29
+
+pre: code.language-lisp.
+  (defunc a (n) (* n 2))
+
+  (+ (a 4) (a 5))
+// answer: 18
+
+p let's try some strings!
+
+pre: code.language-lisp.
+  (defunc enthuse (s) (join s "!!"))
+
+  (enthuse "hey")
+// answer: "hey!!"
